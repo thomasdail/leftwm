@@ -4,20 +4,20 @@ use serde::{Deserialize, Serialize};
 
 mod center_main;
 mod even_horizontal;
-mod even_vertical;
-mod fibonacci;
-mod grid_horizontal;
-mod main_and_horizontal_stack;
+// mod even_vertical;
+// mod fibonacci;
+// mod grid_horizontal;
+// mod main_and_horizontal_stack;
 mod main_and_vert_stack;
 
 #[derive(Debug, Serialize, Deserialize, Clone, PartialEq)]
 pub enum Layout {
     MainAndVertStack,
-    MainAndHorizontalStack,
-    GridHorizontal,
+    // MainAndHorizontalStack,
+    // GridHorizontal,
     EvenHorizontal,
-    EvenVertical,
-    Fibonacci,
+    // EvenVertical,
+    // Fibonacci,
     CenterMain,
 }
 
@@ -30,23 +30,23 @@ impl Default for Layout {
 
 const LAYOUTS: &[&str] = &[
     "MainAndVertStack",
-    "MainAndHorizontalStack",
-    "GridHorizontal",
+    // "MainAndHorizontalStack",
+    // "GridHorizontal",
     "EvenHorizontal",
-    "EvenVertical",
-    "Fibonacci",
+    // "EvenVertical",
+    // "Fibonacci",
     "CenterMain",
 ];
 
 impl From<&str> for Layout {
     fn from(s: &str) -> Self {
         match s {
-            "MainAndVertStack" => Self::MainAndVertStack,
-            "MainAndHorizontalStack" => Self::MainAndHorizontalStack,
-            "GridHorizontal" => Self::GridHorizontal,
+            // "MainAndVertStack" => Self::MainAndVertStack,
+            // "MainAndHorizontalStack" => Self::MainAndHorizontalStack,
+            // "GridHorizontal" => Self::GridHorizontal,
             "EvenHorizontal" => Self::EvenHorizontal,
-            "EvenVertical" => Self::EvenVertical,
-            "Fibonacci" => Self::Fibonacci,
+            // "EvenVertical" => Self::EvenVertical,
+            // "Fibonacci" => Self::Fibonacci,
             "CenterMain" => Self::CenterMain,
             _ => Self::MainAndVertStack,
         }
@@ -58,11 +58,11 @@ impl Layout {
     pub fn update_windows(&self, workspace: &Workspace, windows: &mut Vec<&mut &mut Window>) {
         match self {
             Self::MainAndVertStack => main_and_vert_stack::update(workspace, windows),
-            Self::MainAndHorizontalStack => main_and_horizontal_stack::update(workspace, windows),
-            Self::GridHorizontal => grid_horizontal::update(workspace, windows),
+            // Self::MainAndHorizontalStack => main_and_horizontal_stack::update(workspace, windows),
+            // Self::GridHorizontal => grid_horizontal::update(workspace, windows),
             Self::EvenHorizontal => even_horizontal::update(workspace, windows),
-            Self::EvenVertical => even_vertical::update(workspace, windows),
-            Self::Fibonacci => fibonacci::update(workspace, windows),
+            // Self::EvenVertical => even_vertical::update(workspace, windows),
+            // Self::Fibonacci => fibonacci::update(workspace, windows),
             Self::CenterMain => center_main::update(workspace, windows),
         }
     }
